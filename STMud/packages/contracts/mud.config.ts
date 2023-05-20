@@ -1,6 +1,11 @@
 import { mudConfig } from "@latticexyz/world/register";
 
 export default mudConfig({
+   enums: {
+    ResourceType: ["Wood", "Stone","String", "Berry","Fish"],
+    TerrainType: ["None", "Boulder", "Mud","Tree", "HalfPlatform", "FullPlatform", "LootCrate", "Vine", "WolfDen", "Cave", "BerryBush","Pond"],
+    NPCType: ["Wolf","Bear"],
+  },
   tables: {
     Counter: {
       keySchema: {},
@@ -8,6 +13,12 @@ export default mudConfig({
     },
     //Agent
 	  IsAgent: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "bool",
+    },
+    IsNPC: {
       keySchema: {
         entity: "bytes32",
       },
@@ -26,6 +37,12 @@ export default mudConfig({
         entity: "bytes32",
       },
       schema: "uint32",
+    },
+    IsObstruction: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "bool",
     },
     //Stats
     MaxHP: {
@@ -71,6 +88,70 @@ export default mudConfig({
       },
       schema: "uint32",
     },
+    //Crafting
+    Stone: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "uint32",
+    },
+    Wood: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "uint32",
+    },
+    String: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "uint32",
+    },
+    Berry: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "uint32",
+    },
+    Fish: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "uint32",
+    },
+    //Interaction
+    IsPushable: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "bool",
+    },
+    IsMinable: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "bool",
+    },
+    IsChopable: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "bool",
+    },
+    IsFishable: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "bool",
+    },
+    IsLootable: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "bool",
+    },
+    //Damage
+
     //Item
     IsItem: {
       keySchema: {
@@ -84,12 +165,66 @@ export default mudConfig({
       },
       schema: "bool",
     },
+    CanAttack: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: {damage: "uint32"},
+    },
+    CanShoot: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: {
+        range:"uint32",
+        damage: "uint32"
+      },
+    },
+    CanThrow: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: {
+        damage: "uint32"
+      },
+    },
+    CanChop: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: {damage: "uint32"},
+    },
+    CanMine: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: {damage: "uint32"},
+    },
+    CanFish: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: {damage: "uint32"},
+    },
+
+    EquipedItem: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "bytes32",
+    },
     OwnedBy: {
       keySchema: {
         entity: "bytes32",
       },
       schema: "bytes32",
     },
+    MapConfig: {
+      keySchema: {},
+      schema: {
+        width: "uint32",
+        height: "uint32",
+      },
     Position: {
       keySchema: {
         entity: "bytes32",
@@ -98,7 +233,30 @@ export default mudConfig({
         x: "uint32",
         y: "uint32",
       },
+
+    //Visual
+    ClientContext: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: {
+        context: "string",
+      },
+    //Spawner
+    IsBearSpawner: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "bool",
+    },
+    IsWolfSpawner: {
+      keySchema: {
+        entity: "bytes32",
+      },
+      schema: "bool",
     }
+
+
     
   },
 });
