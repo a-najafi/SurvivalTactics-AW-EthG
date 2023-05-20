@@ -1,0 +1,9 @@
+[submodule "STUEClient/Plugins/ContextFramework"]
+	path = STUEClient/Plugins/ContextFramework
+	url = https://github.com/a-najafi/ContextFramework.git
+[submodule "STUEClient/Plugins/turbolink-uemud"]
+	path = STUEClient/Plugins/turbolink-uemud
+	url = https://github.com/a-najafi/turbolink-uemud.git
+[submodule "STUEClient/Plugins/UEMUD"]
+	path = STUEClient/Plugins/UEMUD
+	url = https://github.com/a-najafi/UEMUD.git
