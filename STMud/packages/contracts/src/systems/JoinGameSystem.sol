@@ -2,8 +2,7 @@
 pragma solidity >=0.8.0;
 
 import { System } from "@latticexyz/world/src/System.sol";
-import { IsAgent, IsObstruction } from "../codegen/Tables.sol";
-import { Position, PositionId } from "../codegen/tables/Position.sol";
+import { IsAgent, IsObstruction, Position } from "../codegen/Tables.sol";
 import { LibMap } from "../libraries/LibMap.sol";
 
 contract JoinGameSystem is System {
