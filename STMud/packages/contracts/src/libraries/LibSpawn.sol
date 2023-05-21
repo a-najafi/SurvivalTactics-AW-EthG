@@ -14,7 +14,7 @@ import { IWorld } from "../codegen/world/IWorld.sol";
 library LibSpawn {
 
 
-  function spawnTree(address worldAddress,uint32 x, uint32 y) public returns (bytes32) {
+  function spawnTree(address worldAddress,uint32 x, uint32 y) internal returns (bytes32) {
     bytes32 entity = LibUtils.getRandomKey();
     IWorld world = IWorld(worldAddress);
     Position.set(world,entity, x, y);
@@ -27,7 +27,7 @@ library LibSpawn {
   }
 
 
-  function spawnMud(address worldAddress,uint32 x, uint32 y) public returns (bytes32) {
+  function spawnMud(address worldAddress,uint32 x, uint32 y) internal returns (bytes32) {
     bytes32 entity = LibUtils.getRandomKey();
     IWorld world = IWorld(worldAddress);
     Position.set(world,entity, x, y);
@@ -37,7 +37,7 @@ library LibSpawn {
   }
 
 
-  function spawnBoulder(address worldAddress,uint32 x, uint32 y) public returns (bytes32) {
+  function spawnBoulder(address worldAddress,uint32 x, uint32 y) internal returns (bytes32) {
     bytes32 entity = LibUtils.getRandomKey();
     IWorld world = IWorld(worldAddress);
     Position.set(world,entity, x, y);
@@ -50,7 +50,7 @@ library LibSpawn {
     return entity;
   }
 
-  function spawnVine(address worldAddress,uint32 x, uint32 y) public returns (bytes32) {
+  function spawnVine(address worldAddress,uint32 x, uint32 y) internal returns (bytes32) {
     bytes32 entity = LibUtils.getRandomKey();
     IWorld world = IWorld(worldAddress);
     Position.set(world,entity, x, y);
@@ -61,7 +61,7 @@ library LibSpawn {
     MaxHP.set(world,entity,10);
     return entity;
   }
-  function spawnBerryBush(address worldAddress,uint32 x, uint32 y) public returns (bytes32) {
+  function spawnBerryBush(address worldAddress,uint32 x, uint32 y) internal returns (bytes32) {
     bytes32 entity = LibUtils.getRandomKey();
     IWorld world = IWorld(worldAddress);
     Position.set(world,entity, x, y);
@@ -73,7 +73,7 @@ library LibSpawn {
     return entity;
   }
 
-  function spawnPond(address worldAddress,uint32 x, uint32 y) public returns (bytes32) {
+  function spawnPond(address worldAddress,uint32 x, uint32 y) internal returns (bytes32) {
     bytes32 entity = LibUtils.getRandomKey();
     IWorld world = IWorld(worldAddress);
     Position.set(world,entity, x, y);
@@ -84,7 +84,7 @@ library LibSpawn {
     return entity;
   }
 
-   function spawnLootCrate(address worldAddress,uint32 x, uint32 y) public returns (bytes32) {
+   function spawnLootCrate(address worldAddress,uint32 x, uint32 y) internal returns (bytes32) {
     bytes32 entity = LibUtils.getRandomKey();
     IWorld world = IWorld(worldAddress);
     Position.set(world,entity, x, y);
@@ -95,7 +95,7 @@ library LibSpawn {
     MaxHP.set(world,entity,50);
     return entity;
   }
-  function spawnCave(address worldAddress,uint32 x, uint32 y) public returns (bytes32) {
+  function spawnCave(address worldAddress,uint32 x, uint32 y) internal returns (bytes32) {
     bytes32 entity = LibUtils.getRandomKey();
     IWorld world = IWorld(worldAddress);
     Position.set(world,entity, x, y);
@@ -105,7 +105,7 @@ library LibSpawn {
     MaxHP.set(world,entity,300);
     return entity;
   }
-  function spawnWolfDen(address worldAddress,uint32 x, uint32 y) public returns (bytes32) {
+  function spawnWolfDen(address worldAddress,uint32 x, uint32 y) internal returns (bytes32) {
     bytes32 entity = LibUtils.getRandomKey();
     IWorld world = IWorld(worldAddress);
     Position.set(world,entity, x, y);
