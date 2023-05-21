@@ -29,7 +29,7 @@ contract PostDeploy is Script {
     for (uint32 y = 0; y < height; y++) {
       for (uint32 x = 0; x < width; x++) {
         TerrainType terrainType = map[y][x];
-        spawnEntityAtPosition(terrainType, x, y);
+        spawnEntityAtPosition(worldAddress,terrainType, x, y);
         }
       }
 
@@ -76,7 +76,7 @@ contract PostDeploy is Script {
   }
 
 
-  function spawnEntityAtPosition(TerrainType terrainType, uint32 x, uint32 y) internal {
+  function spawnEntityAtPosition(address worldAddress,TerrainType terrainType, uint32 x, uint32 y) internal {
         if (terrainType == TerrainType.None) 
           continue;
         else if(terrainType == TerrainType.Tree)
