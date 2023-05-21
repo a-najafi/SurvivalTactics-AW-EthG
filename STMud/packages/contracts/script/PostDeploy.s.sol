@@ -66,23 +66,23 @@ contract PostDeploy is Script {
         if (terrainType == TerrainType.None) 
           continue;
         else if(terrainType == TerrainType.Tree)
-          LibSpawn.spawnTree(x,y);
+          LibSpawn.spawnTree(worldAddress,x,y);
         else if(terrainType == TerrainType.Mud)
-          LibSpawn.spawnMud(x,y);
+          LibSpawn.spawnMud(worldAddress,x,y);
         else if(terrainType == TerrainType.Boulder)
-          LibSpawn.spawnBoulder(x,y);
+          LibSpawn.spawnBoulder(worldAddress,x,y);
         else if(terrainType == TerrainType.Vine)
-          LibSpawn.spawnVine(x,y);
+          LibSpawn.spawnVine(worldAddress,x,y);
         else if(terrainType == TerrainType.LootCrate)
-          LibSpawn.spawnLootCrate(x,y);
+          LibSpawn.spawnLootCrate(worldAddress,x,y);
         else if(terrainType == TerrainType.BerryBush)
-          LibSpawn.spawnBerryBush(x,y);
+          LibSpawn.spawnBerryBush(worldAddress,x,y);
         else if(terrainType == TerrainType.Pond)
-          LibSpawn.spawnPond(x,y);
+          LibSpawn.spawnPond(worldAddress,x,y);
         else if(terrainType == TerrainType.WolfDen)
-          LibSpawn.spawnWolfDen(x,y);
+          LibSpawn.spawnWolfDen(worldAddress,x,y);
         else if(terrainType == TerrainType.Cave)
-          LibSpawn.spawnCave(x,y);
+          LibSpawn.spawnCave(worldAddress,x,y);
 
         }
       }

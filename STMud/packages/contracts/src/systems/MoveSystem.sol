@@ -2,7 +2,7 @@
 pragma solidity >=0.8.0;
 
 import { System } from "@latticexyz/world/src/System.sol";
-import { IsAgent, IsObstruction, MoveSpeed, Position, MapConfig } from "../codegen/Tables.sol";
+import { IsAgent, MoveSpeed, Position, MapConfig } from "../codegen/Tables.sol";
 import { LibMap } from "../libraries/LibMap.sol";
 
 contract MoveSystem is System {
