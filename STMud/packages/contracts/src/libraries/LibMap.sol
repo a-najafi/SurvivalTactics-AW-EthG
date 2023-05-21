@@ -14,25 +14,25 @@ library LibMap {
         return deltaX + deltaY;
     }
 
-    function isObstructed(address worldAddress,uint32 x, uint32 y) internal pure returns (bool){
+    function isObstructed(address worldAddress,uint32 x, uint32 y) internal view returns (bool){
 
         IWorld world = IWorld(worldAddress);
         bytes32[] memory keysWithValue = getKeysWithValue(world, PositionTableId, Position.encode(x,y));
         for(uint32 i = 0; i < keysWithValue.length; i++)
         {
-            if(IsObstruction.get(keysWithValue[i]))
+            if(IsObstruction.get(world,keysWithValue[i]))
                 return true;
         }
         return false;
     }
 
 
-    function getMovementCost(address worldAddress,uint32 x, uint32 y) internal pure returns (uint32) {
+    function getMovementCost(address worldAddress,uint32 x, uint32 y) internal view returns (uint32) {
         IWorld world = IWorld(worldAddress);
         bytes32[] memory keysWithValue = getKeysWithValue(world, PositionTableId, Position.encode(x,y));
         for(uint32 i = 0; i < keysWithValue.length; i++)
         {
-            uint32 movementCost = MovementCost.get(keysWithValue[i]);
+            uint32 movementCost = MovementCost.get(world,keysWithValue[i]);
             if(movementCost > 0)
                 return movementCost;
         }
