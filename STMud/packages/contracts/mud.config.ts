@@ -173,6 +173,7 @@ export default mudConfig({
         range:"uint32",
         damage: "uint32"
       },
+      dataStruct: false,
     },
     CanThrow: {
       keySchema: {
@@ -218,7 +219,8 @@ export default mudConfig({
       schema: {
         width: "uint32",
         height: "uint32",
-      }
+      },
+      dataStruct: false,
     },
     Position: {
       keySchema: {
@@ -227,7 +229,8 @@ export default mudConfig({
       schema: {
         x: "uint32",
         y: "uint32",
-      }
+      },
+      dataStruct: false,
     },
 
     //Visual

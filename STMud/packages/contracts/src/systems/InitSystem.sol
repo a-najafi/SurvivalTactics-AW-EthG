@@ -12,6 +12,9 @@ import { MaxHp } from "../codegen/Tables.sol";
 import { TerrainType } from "../codegen/Types.sol";
 import { LibUtils } from "../libraries/LibUtils.sol";
 
+
+bytes32 constant SingletonKey = bytes32(uint256(0x060D));
+
 contract InitSystem is System {
   function init() public {
 
@@ -81,7 +84,7 @@ contract InitSystem is System {
       }
     }
 
-    MapConfig.set(world, width, height);
+    MapConfig.set(SingletonKey, width, height);
   
 
 
