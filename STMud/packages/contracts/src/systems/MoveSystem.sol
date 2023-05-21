@@ -8,7 +8,7 @@ import { LibUtils } from "../libraries/LibUtils.sol";
 
 contract MoveSystem is System {
   
-  function move(bytes path) public {
+  function move(bytes memory path) public {
     
     bytes32 entity = LibUtils.addressToEntityKey(address(_msgSender()));
     require(IsAgent.get(entity), "not joined yet");
