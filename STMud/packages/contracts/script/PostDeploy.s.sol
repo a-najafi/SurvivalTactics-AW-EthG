@@ -3,9 +3,9 @@ pragma solidity >=0.8.0;
 
 import { Script } from "forge-std/Script.sol";
 import { console } from "forge-std/console.sol";
-import { MapConfig} from "../codegen/Tables.sol";
+import { MapConfig} from "../src/codegen/Tables.sol";
 
-import { TerrainType } from "../codegen/Types.sol";
+import { TerrainType } from "../src/codegen/Types.sol";
 import { LibUtils } from "../libraries/LibUtils.sol";
 import { LibSpawn } from "../libraries/LibSpawn.sol";
 
