@@ -83,7 +83,7 @@ contract PostDeploy is Script {
         else if(terrainType == TerrainType.WolfDen)
           LibSpawn.spawnWolfDen(x,y);
         else if(terrainType == TerrainType.Cave)
-          LibSpawnspawnCave(x,y);
+          LibSpawn.spawnCave(x,y);
 
         }
       }
