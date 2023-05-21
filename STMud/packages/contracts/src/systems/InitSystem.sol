@@ -24,7 +24,7 @@ contract InitSystem is System {
     TerrainType B = TerrainType.Boulder;
     TerrainType V = TerrainType.Vine;
     TerrainType L = TerrainType.LootCrate;
-    TerrainType B = TerrainType.BerryBush;
+    TerrainType F = TerrainType.BerryBush;
     TerrainType P = TerrainType.Pond;
     TerrainType W = TerrainType.WolfDen;
     TerrainType C = TerrainType.Cave;
