@@ -17,8 +17,27 @@ contract PostDeploy is Script {
     // Start broadcasting transactions from the deployer account
     vm.startBroadcast(deployerPrivateKey);
 
-    // ------------------ EXAMPLES ------------------
 
+    
+    TerrainType[][] memory map = setupMapDesign();
+
+    uint32 height = uint32(map.length);
+    uint32 width = uint32(map[0].length);
+
+    MapConfig.set(IWorld(worldAddress),width, height);
+
+    for (uint32 y = 0; y < height; y++) {
+      for (uint32 x = 0; x < width; x++) {
+        TerrainType terrainType = map[y][x];
+        spawnEntityAtPosition(terrainType, x, y);
+        }
+      }
+
+
+    vm.stopBroadcast();
+  }
+
+  function setupMapDesign() internal view returns (TerrainType[][] memory map) {
     TerrainType O = TerrainType.None;
     TerrainType T = TerrainType.Tree;
     TerrainType M = TerrainType.Mud;
@@ -31,7 +50,7 @@ contract PostDeploy is Script {
     TerrainType C = TerrainType.Cave;
     
 
-    TerrainType[20][20] memory map = [
+    map = [
       [O, O, O, O, O, O, T, O, O, O, O, O, O, O, O, O, O, O, O, O],
       [O, O, T, O, O, O, O, O, T, O, O, O, O, B, O, O, O, O, O, O],
       [O, T, T, T, T, O, O, O, O, O, O, O, O, O, O, T, T, O, O, O],
@@ -53,15 +72,11 @@ contract PostDeploy is Script {
       [O, O, O, T, T, T, T, O, O, O, O, T, O, O, O, T, O, O, O, O],
       [O, O, O, O, O, T, O, O, O, O, O, O, O, O, O, O, O, O, O, O]
     ];
+    return map;
+  }
 
-    uint32 height = uint32(map.length);
-    uint32 width = uint32(map[0].length);
 
-    MapConfig.set(IWorld(worldAddress),width, height);
-
-    for (uint32 y = 0; y < height; y++) {
-      for (uint32 x = 0; x < width; x++) {
-        TerrainType terrainType = map[y][x];
+  function spawnEntityAtPosition(TerrainType terrainType, uint32 x, uint32 y) internal {
         if (terrainType == TerrainType.None) 
           continue;
         else if(terrainType == TerrainType.Tree)
@@ -82,11 +97,7 @@ contract PostDeploy is Script {
           LibSpawn.spawnWolfDen(worldAddress,x,y);
         else if(terrainType == TerrainType.Cave)
           LibSpawn.spawnCave(worldAddress,x,y);
-
-        }
-      }
-
-
-    vm.stopBroadcast();
   }
+
+
 }
