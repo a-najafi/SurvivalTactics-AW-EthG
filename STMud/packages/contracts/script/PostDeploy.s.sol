@@ -37,7 +37,7 @@ contract PostDeploy is Script {
     vm.stopBroadcast();
   }
 
-  function setupMapDesign() internal view returns (TerrainType[][] memory map) {
+  function setupMapDesign() internal view returns (TerrainType[][] memory) {
     TerrainType O = TerrainType.None;
     TerrainType T = TerrainType.Tree;
     TerrainType M = TerrainType.Mud;
