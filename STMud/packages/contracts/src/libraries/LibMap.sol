@@ -1,6 +1,7 @@
 pragma solidity >=0.8.0;
 
 
+import { IsObstruction, MovementCost } from "../codegen/Tables.sol";
 import { Position, PositionTableId } from "../codegen/tables/Position.sol";
 import { getKeysWithValue } from "@latticexyz/world/src/modules/keyswithvalue/getKeysWithValue.sol";
 
@@ -12,8 +13,9 @@ library LibMap {
         return deltaX + deltaY;
     }
 
-    function isObstructed(uint32 x, uint32 y) internal pure returns (bool){
+    function isObstructed(address worldAddress,uint32 x, uint32 y) internal pure returns (bool){
 
+        IWorld world = IWorld(worldAddress);
         bytes32[] memory keysWithValue = getKeysWithValue(world, PositionTableId, Position.encode(x,y));
         for(uint32 i = 0; i < keysWithValue.Length; i++)
         {
@@ -24,7 +26,8 @@ library LibMap {
     }
 
 
-    function getMovementCost(uint32 x, uint32 y) internal pure returns (uint32) {
+    function getMovementCost(address worldAddress,uint32 x, uint32 y) internal pure returns (uint32) {
+        IWorld world = IWorld(worldAddress);
         bytes32[] memory keysWithValue = getKeysWithValue(world, PositionTableId, Position.encode(x,y));
         for(uint32 i = 0; i < keysWithValue.Length; i++)
         {

@@ -23,10 +23,10 @@ contract MoveSystem is System {
         uint32 toX = uint32(path[i]) % width;
         uint32 toY = uint32(path[i]) / width;
         
-        uint32 movementCost = LibMap.getMovementCost(toX,toY);
+        uint32 movementCost = LibMap.getMovementCost(_world(),toX,toY);
         require(movementCost < moveSpeed, "movement cost is higher then leftover move speed");
         require(LibMap.distance(fromX, fromY, toX, toY) == 1, "can only move to adjacent spaces");
-        require(!LibMap.isObstructed(toX, toY), "can not pass through obstruction");
+        require(!LibMap.isObstructed(_world(),toX, toY), "can not pass through obstruction");
 
         Position.set(entity,toX,toY);
 

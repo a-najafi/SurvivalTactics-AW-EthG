@@ -11,7 +11,7 @@ contract JoinGameSystem is System {
     
     bytes32 entity = addressToEntityKey(address(_msgSender()));
     require(!IsAgent.get(entity), "already joined");
-    require(!LibMap.isObstructed(x,y),"this space is obstructed" );
+    require(!LibMap.isObstructed(_world(),x,y),"this space is obstructed" );
     
     
     IsAgent.set(entity, true);
