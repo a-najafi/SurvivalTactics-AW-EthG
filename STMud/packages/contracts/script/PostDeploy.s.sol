@@ -4,11 +4,10 @@ pragma solidity >=0.8.0;
 import { Script } from "forge-std/Script.sol";
 import { console } from "forge-std/console.sol";
 import { MapConfig} from "../src/codegen/Tables.sol";
-
 import { TerrainType } from "../src/codegen/Types.sol";
 import { LibUtils } from "../src/libraries/LibUtils.sol";
 import { LibSpawn } from "../src/libraries/LibSpawn.sol";
-
+import { IWorld } from "../src/codegen/world/IWorld.sol";
 
 contract PostDeploy is Script {
   function run(address worldAddress) external {
