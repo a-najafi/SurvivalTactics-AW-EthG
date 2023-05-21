@@ -3,12 +3,12 @@ pragma solidity >=0.8.0;
 
 import { System } from "@latticexyz/world/src/System.sol";
 import { MapConfig} from "../codegen/Tables.sol";
-import { Counter, Wood, Stone, Cord } from "../codegen/Tables.sol";
+import { Wood, Stone, Cord, Fish, Berry } from "../codegen/Tables.sol";
 import { Position, MovementCost } from "../codegen/Tables.sol";
 import { IsObstruction, IsBearSpawner, IsWolfSpawner } from "../codegen/Tables.sol";
-import { IsChoppable, IsMinable, IsFishable, IsFishable, IsPushable } from "../codegen/Tables.sol";
+import { IsChopable, IsMinable, IsFishable, IsFishable, IsPushable } from "../codegen/Tables.sol";
 import { ClientContext } from "../codegen/Tables.sol";
-import { MaxHp } from "../codegen/Tables.sol";
+import { MaxHP } from "../codegen/Tables.sol";
 import { TerrainType } from "../codegen/Types.sol";
 import { LibUtils } from "../libraries/LibUtils.sol";
 
@@ -91,11 +91,11 @@ contract InitSystem is System {
   function spawnTree(uint32 x, uint32 y) public returns (bytes32) {
     bytes32 entity = LibUtils.getRandomKey();
     Position.set(entity, x, y);
-    IsChoppable.set(entity,true);
+    IsChopable.set(entity,true);
     Wood.set(entity,1000);
     IsObstruction.set(entity,true);
     ClientContext.set(entity,"Tree");
-    MaxHp.set(entity,50);
+    MaxHP.set(entity,50);
     return entity;
   }
 
@@ -117,28 +117,28 @@ contract InitSystem is System {
     Stone.set(entity,1000);
     IsObstruction.set(entity,true);
     ClientContext.set(entity,"Boulder");
-    MaxHp.set(entity,100);
+    MaxHP.set(entity,100);
     return entity;
   }
 
   function spawnVine(uint32 x, uint32 y) public returns (bytes32) {
     bytes32 entity = LibUtils.getRandomKey();
     Position.set(entity, x, y);
-    IsChoppable.set(entity,true);
+    IsChopable.set(entity,true);
     Cord.set(entity,1000);
     MovementCost.set(entity,2);
     ClientContext.set(entity,"Vine");
-    MaxHp.set(entity,10);
+    MaxHP.set(entity,10);
     return entity;
   }
   function spawnBerryBush(uint32 x, uint32 y) public returns (bytes32) {
     bytes32 entity = LibUtils.getRandomKey();
     Position.set(entity, x, y);
-    IsChoppable.set(entity,true);
+    IsChopable.set(entity,true);
     Berry.set(entity,1000);
     MovementCost.set(entity,2);
     ClientContext.set(entity,"BerryBush");
-    MaxHp.set(entity,10);
+    MaxHP.set(entity,10);
     return entity;
   }
 
@@ -159,7 +159,7 @@ contract InitSystem is System {
     IsPushable.set(entity,true);
     IsLootable.set(entity,true);
     ClientContext.set(entity,"LootCrate");
-    MaxHp.set(entity,50);
+    MaxHP.set(entity,50);
     return entity;
   }
   function spawnCave(uint32 x, uint32 y) public returns (bytes32) {
@@ -168,7 +168,7 @@ contract InitSystem is System {
     IsObstruction.set(entity,true);
     IsBearSpawner.set(entity,true);
     ClientContext.set(entity,"Cave");
-    MaxHp.set(entity,300);
+    MaxHP.set(entity,300);
     return entity;
   }
   function spawnWolfDen(uint32 x, uint32 y) public returns (bytes32) {
@@ -177,7 +177,7 @@ contract InitSystem is System {
     IsObstruction.set(entity,true);
     IsWolfSpawner.set(entity,true);
     ClientContext.set(entity,"WolfDen");
-    MaxHp.set(entity,200);
+    MaxHP.set(entity,200);
     return entity;
   }
 
