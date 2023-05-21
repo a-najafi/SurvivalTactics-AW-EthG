@@ -2,10 +2,12 @@
 pragma solidity >=0.8.0;
 
 import { System } from "@latticexyz/world/src/System.sol";
-import { Position, Counter, Wood, Stone, String } from "../codegen/Tables.sol";
-import { Position } from "../codegen/Tables.sol";
-import { IsChoppable } from "../codegen/Tables.sol";
+import { Counter, Wood, Stone, String } from "../codegen/Tables.sol";
+import { Position, MovementCost } from "../codegen/Tables.sol";
+import { IsObstruction, IsBearSpawner, IsWolfSpawner } from "../codegen/Tables.sol";
+import { IsChoppable, IsMinable, IsFishable, IsFishable, IsPushable } from "../codegen/Tables.sol";
 import { ClientContext } from "../codegen/Tables.sol";
+import { MaxHp } from "../codegen/Tables.sol";
 import { TerrainType } from "../src/codegen/Types.sol";
 import { LibUtils } from "../src/libraries/LibUtils.sol";
 
@@ -14,7 +16,7 @@ contract InitSystem is System {
 
     TerrainType O = TerrainType.None;
     TerrainType T = TerrainType.Tree;
-    TerrainType V = TerrainType.Mud;
+    TerrainType M = TerrainType.Mud;
     TerrainType B = TerrainType.Boulder;
     TerrainType V = TerrainType.Vine;
     TerrainType L = TerrainType.LootCrate;
@@ -53,17 +55,27 @@ contract InitSystem is System {
     for (uint32 y = 0; y < height; y++) {
       for (uint32 x = 0; x < width; x++) {
         TerrainType terrainType = map[y][x];
-        if (terrainType == TerrainType.None) continue;
+        if (terrainType == TerrainType.None) 
+          continue;
+        else if(terrainType == TerrainType.Tree)
+          spawnTree(x,y);
+        else if(terrainType == TerrainType.Mud)
+          spawnMud(x,y);
+        else if(terrainType == TerrainType.Boulder)
+          spawnBoulder(x,y);
+        else if(terrainType == TerrainType.Vine)
+          spawnVine(x,y);
+        else if(terrainType == TerrainType.LootCrate)
+          spawnLootCrate(x,y);
+        else if(terrainType == TerrainType.BerryBush)
+          spawnBerryBush(x,y);
+        else if(terrainType == TerrainType.Pond)
+          spawnPond(x,y);
+        else if(terrainType == TerrainType.WolfDen)
+          spawnWolfDen(x,y);
+        else if(terrainType == TerrainType.Cave)
+          spawnCave(x,y);
 
-        terrain[(y * width) + x] = bytes1(uint8(terrainType));
-
-        bytes32 entity = positionToEntityKey(x, y);
-        if (terrainType == TerrainType.Boulder) {
-          Position.set(world, entity, x, y);
-          Obstruction.set(world, entity, true);
-        } else if (terrainType == TerrainType.TallGrass) {
-          Position.set(world, entity, x, y);
-          EncounterTrigger.set(world, entity, true);
         }
       }
     }
@@ -155,7 +167,7 @@ contract InitSystem is System {
     MaxHp.set(entity,300);
     return entity;
   }
-  function spawnCave(uint32 x, uint32 y) public returns (bytes32) {
+  function spawnWolfDen(uint32 x, uint32 y) public returns (bytes32) {
     bytes32 entity = LibUtils.getRandomKey();
     Position.set(entity, x, y);
     IsObstruction.set(entity,true);
