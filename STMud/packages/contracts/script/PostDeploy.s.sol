@@ -58,7 +58,8 @@ contract PostDeploy is Script {
     uint32 height = uint32(map.length);
     uint32 width = uint32(map[0].length);
 
-    MapConfig.set(width, height);
+    MapConfig.set(IWorld(worldAddress),width, height);
+
     for (uint32 y = 0; y < height; y++) {
       for (uint32 x = 0; x < width; x++) {
         TerrainType terrainType = map[y][x];
