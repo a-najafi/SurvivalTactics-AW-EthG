@@ -8,8 +8,8 @@ import { IsObstruction, IsBearSpawner, IsWolfSpawner } from "../codegen/Tables.s
 import { IsChoppable, IsMinable, IsFishable, IsFishable, IsPushable } from "../codegen/Tables.sol";
 import { ClientContext } from "../codegen/Tables.sol";
 import { MaxHp } from "../codegen/Tables.sol";
-import { TerrainType } from "../src/codegen/Types.sol";
-import { LibUtils } from "../src/libraries/LibUtils.sol";
+import { TerrainType } from "../codegen/Types.sol";
+import { LibUtils } from "../libraries/LibUtils.sol";
 
 contract InitSystem is System {
   function init() public {

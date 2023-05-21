@@ -99,7 +99,7 @@ export default mudConfig({
       },
       schema: "uint32",
     },
-    String: {
+    Cord: {
       keySchema: {
         entity: "bytes32",
       },
