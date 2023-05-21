@@ -21,8 +21,8 @@ contract MoveSystem is System {
 
     for(uint32 i = 0; i < path.length; i++)
     {
-        uint32 toX = uint32(path[i]) % width;
-        uint32 toY = uint32(path[i]) / width;
+        uint32 toX = uint32(uint8(path[i])) % width;
+        uint32 toY = uint32(uint8(path[i])) / width;
         
         uint32 movementCost = LibMap.getMovementCost(_world(),toX,toY);
         require(movementCost < moveSpeed, "movement cost is higher then leftover move speed");
