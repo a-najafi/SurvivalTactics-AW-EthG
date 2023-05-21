@@ -84,7 +84,7 @@ contract InitSystem is System {
       }
     }
 
-    MapConfig.set(SingletonKey, width, height);
+    //MapConfig.set(SingletonKey, width, height);
   
 
 

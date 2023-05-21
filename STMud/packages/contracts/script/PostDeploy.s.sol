@@ -16,9 +16,6 @@ contract PostDeploy is Script {
 
     // ------------------ EXAMPLES ------------------
 
-  
-    console.log("Increment via IWorld:", newValue);
-
     IWorld(worldAddress).init();
 
 
