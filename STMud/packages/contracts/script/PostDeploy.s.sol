@@ -10,8 +10,6 @@ import { LibUtils } from "../src/libraries/LibUtils.sol";
 import { LibSpawn } from "../src/libraries/LibSpawn.sol";
 
 
-bytes32 constant SingletonKey = bytes32(uint256(0x060D));
-
 contract PostDeploy is Script {
   function run(address worldAddress) external {
     // Load the private key from the `PRIVATE_KEY` environment variable (in .env)
@@ -60,7 +58,7 @@ contract PostDeploy is Script {
     uint32 height = uint32(map.length);
     uint32 width = uint32(map[0].length);
 
-    MapConfig.set(SingletonKey, width, height);
+    MapConfig.set(width, height);
     for (uint32 y = 0; y < height; y++) {
       for (uint32 x = 0; x < width; x++) {
         TerrainType terrainType = map[y][x];
