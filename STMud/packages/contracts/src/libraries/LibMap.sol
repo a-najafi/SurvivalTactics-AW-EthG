@@ -18,7 +18,7 @@ library LibMap {
 
         IWorld world = IWorld(worldAddress);
         bytes32[] memory keysWithValue = getKeysWithValue(world, PositionTableId, Position.encode(x,y));
-        for(uint32 i = 0; i < keysWithValue.Length; i++)
+        for(uint32 i = 0; i < keysWithValue.length; i++)
         {
             if(IsObstruction.get(keysWithValue[i]))
                 return true;
@@ -30,7 +30,7 @@ library LibMap {
     function getMovementCost(address worldAddress,uint32 x, uint32 y) internal pure returns (uint32) {
         IWorld world = IWorld(worldAddress);
         bytes32[] memory keysWithValue = getKeysWithValue(world, PositionTableId, Position.encode(x,y));
-        for(uint32 i = 0; i < keysWithValue.Length; i++)
+        for(uint32 i = 0; i < keysWithValue.length; i++)
         {
             uint32 movementCost = MovementCost.get(keysWithValue[i]);
             if(movementCost > 0)
