@@ -50,7 +50,7 @@ contract PostDeploy is Script {
     TerrainType C = TerrainType.Cave;
     
 
-    map = [
+    TerrainType[20][20] memory map = [
       [O, O, O, O, O, O, T, O, O, O, O, O, O, O, O, O, O, O, O, O],
       [O, O, T, O, O, O, O, O, T, O, O, O, O, B, O, O, O, O, O, O],
       [O, T, T, T, T, O, O, O, O, O, O, O, O, O, O, T, T, O, O, O],
@@ -77,9 +77,8 @@ contract PostDeploy is Script {
 
 
   function spawnEntityAtPosition(address worldAddress,TerrainType terrainType, uint32 x, uint32 y) internal {
-        if (terrainType == TerrainType.None) 
-          continue;
-        else if(terrainType == TerrainType.Tree)
+        
+        if(terrainType == TerrainType.Tree)
           LibSpawn.spawnTree(worldAddress,x,y);
         else if(terrainType == TerrainType.Mud)
           LibSpawn.spawnMud(worldAddress,x,y);
