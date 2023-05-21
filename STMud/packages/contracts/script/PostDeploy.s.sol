@@ -6,8 +6,8 @@ import { console } from "forge-std/console.sol";
 import { MapConfig} from "../src/codegen/Tables.sol";
 
 import { TerrainType } from "../src/codegen/Types.sol";
-import { LibUtils } from "../libraries/LibUtils.sol";
-import { LibSpawn } from "../libraries/LibSpawn.sol";
+import { LibUtils } from "../src/libraries/LibUtils.sol";
+import { LibSpawn } from "../src/libraries/LibSpawn.sol";
 
 
 bytes32 constant SingletonKey = bytes32(uint256(0x060D));
