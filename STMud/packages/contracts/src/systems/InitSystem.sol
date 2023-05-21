@@ -2,7 +2,7 @@
 pragma solidity >=0.8.0;
 
 import { System } from "@latticexyz/world/src/System.sol";
-import { Counter, Wood, Stone, String } from "../codegen/Tables.sol";
+import { Counter, Wood, Stone, Cord } from "../codegen/Tables.sol";
 import { Position, MovementCost } from "../codegen/Tables.sol";
 import { IsObstruction, IsBearSpawner, IsWolfSpawner } from "../codegen/Tables.sol";
 import { IsChoppable, IsMinable, IsFishable, IsFishable, IsPushable } from "../codegen/Tables.sol";
@@ -81,7 +81,7 @@ contract InitSystem is System {
     }
 
     MapConfig.set(world, width, height);
-  }
+  
 
 
   function spawnTree(uint32 x, uint32 y) public returns (bytes32) {
@@ -121,7 +121,7 @@ contract InitSystem is System {
     bytes32 entity = LibUtils.getRandomKey();
     Position.set(entity, x, y);
     IsChoppable.set(entity,true);
-    String.set(entity,1000);
+    Cord.set(entity,1000);
     MovementCost.set(entity,2);
     ClientContext.set(entity,"Vine");
     MaxHp.set(entity,10);

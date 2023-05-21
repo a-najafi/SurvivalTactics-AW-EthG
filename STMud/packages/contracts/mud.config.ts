@@ -2,9 +2,7 @@ import { mudConfig } from "@latticexyz/world/register";
 
 export default mudConfig({
    enums: {
-    ResourceType: ["Wood", "Stone","String", "Berry","Fish"],
     TerrainType: ["None", "Boulder", "Mud","Tree", "HalfPlatform", "FullPlatform", "LootCrate", "Vine", "WolfDen", "Cave", "BerryBush","Pond"],
-    NPCType: ["Wolf","Bear"],
   },
   tables: {
     Counter: {
