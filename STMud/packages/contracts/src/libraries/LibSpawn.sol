@@ -8,7 +8,7 @@ import { IsObstruction, IsBearSpawner, IsWolfSpawner } from "../codegen/Tables.s
 import { IsChopable, IsMinable, IsFishable, IsLootable, IsPushable } from "../codegen/Tables.sol";
 import { ClientContext } from "../codegen/Tables.sol";
 import { MaxHP } from "../codegen/Tables.sol";
-import { LibUtils } from "LibUtils.sol";
+import { LibUtils } from "../libraries/LibUtils.sol";
 
 library LibSpawn {
 
