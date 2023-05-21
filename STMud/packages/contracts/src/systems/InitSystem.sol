@@ -6,7 +6,7 @@ import { MapConfig} from "../codegen/Tables.sol";
 import { Wood, Stone, Cord, Fish, Berry } from "../codegen/Tables.sol";
 import { Position, MovementCost } from "../codegen/Tables.sol";
 import { IsObstruction, IsBearSpawner, IsWolfSpawner } from "../codegen/Tables.sol";
-import { IsChopable, IsMinable, IsFishable, IsFishable, IsPushable } from "../codegen/Tables.sol";
+import { IsChopable, IsMinable, IsFishable, IsLootable, IsPushable } from "../codegen/Tables.sol";
 import { ClientContext } from "../codegen/Tables.sol";
 import { MaxHP } from "../codegen/Tables.sol";
 import { TerrainType } from "../codegen/Types.sol";
