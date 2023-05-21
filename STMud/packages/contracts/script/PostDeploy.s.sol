@@ -48,7 +48,7 @@ contract PostDeploy is Script {
     TerrainType W = TerrainType.WolfDen;
     TerrainType C = TerrainType.Cave;
 
-    TerrainType[20][20] memory map = [
+    TerrainType[20][20] memory fixedSizeMap = [
       [O, O, O, O, O, O, T, O, O, O, O, O, O, O, O, O, O, O, O, O],
       [O, O, T, O, O, O, O, O, T, O, O, O, O, B, O, O, O, O, O, O],
       [O, T, T, T, T, O, O, O, O, O, O, O, O, O, O, T, T, O, O, O],
