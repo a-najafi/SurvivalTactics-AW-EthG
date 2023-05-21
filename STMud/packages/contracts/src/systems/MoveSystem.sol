@@ -4,12 +4,13 @@ pragma solidity >=0.8.0;
 import { System } from "@latticexyz/world/src/System.sol";
 import { IsAgent, MoveSpeed, Position, MapConfig } from "../codegen/Tables.sol";
 import { LibMap } from "../libraries/LibMap.sol";
+import { LibUtils } from "../libraries/LibUtils.sol";
 
 contract MoveSystem is System {
   
   function move(bytes path) public {
     
-    bytes32 entity = addressToEntityKey(address(_msgSender()));
+    bytes32 entity = LibUtils.addressToEntityKey(address(_msgSender()));
     require(IsAgent.get(entity), "not joined yet");
 
     uint32 width = MapConfig.getWidth();
