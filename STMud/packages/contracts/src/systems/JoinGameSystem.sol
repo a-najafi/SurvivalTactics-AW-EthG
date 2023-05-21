@@ -17,7 +17,7 @@ contract JoinGameSystem is System {
     
     IsAgent.set(entity, true);
     Position.set(entity, x, y);
-    IsObstruction.set(entity, x, y);
+    IsObstruction.set(entity, true);
 
   
   }
