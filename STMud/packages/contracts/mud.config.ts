@@ -5,10 +5,6 @@ export default mudConfig({
     TerrainType: ["None", "Boulder", "Mud","Tree", "HalfPlatform", "FullPlatform", "LootCrate", "Vine", "WolfDen", "Cave", "BerryBush","Pond"],
   },
   tables: {
-    Counter: {
-      keySchema: {},
-      schema: "uint32",
-    },
     //Agent
 	  IsAgent: {
       keySchema: {

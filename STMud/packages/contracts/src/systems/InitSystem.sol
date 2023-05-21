@@ -2,6 +2,7 @@
 pragma solidity >=0.8.0;
 
 import { System } from "@latticexyz/world/src/System.sol";
+import { MapConfig} from "../codegen/Tables.sol";
 import { Counter, Wood, Stone, Cord } from "../codegen/Tables.sol";
 import { Position, MovementCost } from "../codegen/Tables.sol";
 import { IsObstruction, IsBearSpawner, IsWolfSpawner } from "../codegen/Tables.sol";
