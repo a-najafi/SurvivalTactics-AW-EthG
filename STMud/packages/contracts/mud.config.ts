@@ -224,7 +224,8 @@ export default mudConfig({
       schema: {
         width: "uint32",
         height: "uint32",
-      },
+      }
+    },
     Position: {
       keySchema: {
         entity: "bytes32",
@@ -232,7 +233,8 @@ export default mudConfig({
       schema: {
         x: "uint32",
         y: "uint32",
-      },
+      }
+    },
 
     //Visual
     ClientContext: {
@@ -241,7 +243,8 @@ export default mudConfig({
       },
       schema: {
         context: "string",
-      },
+      }
+    },
     //Spawner
     IsBearSpawner: {
       keySchema: {
@@ -254,7 +257,7 @@ export default mudConfig({
         entity: "bytes32",
       },
       schema: "bool",
-    }
+    },
 
 
     
