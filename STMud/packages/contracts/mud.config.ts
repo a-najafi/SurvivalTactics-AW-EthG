@@ -1,4 +1,5 @@
 import { mudConfig } from "@latticexyz/world/register";
+import { resolveTableId } from "@latticexyz/config";
 
 export default mudConfig({
    enums: {
@@ -259,4 +260,11 @@ export default mudConfig({
 
     
   },
+  modules: [
+    {
+      name: "KeysWithValueModule",
+      root: true,
+      args: [resolveTableId("Position")],
+    },
+  ],
 });
