@@ -17,8 +17,6 @@ contract PostDeploy is Script {
     // Start broadcasting transactions from the deployer account
     vm.startBroadcast(deployerPrivateKey);
 
-
-    
     TerrainType[][] memory map = setupMapDesign();
 
     uint32 height = uint32(map.length);
@@ -37,6 +35,7 @@ contract PostDeploy is Script {
     vm.stopBroadcast();
   }
 
+  
   function setupMapDesign() internal view returns (TerrainType[][] memory) {
     TerrainType O = TerrainType.None;
     TerrainType T = TerrainType.Tree;
@@ -48,7 +47,6 @@ contract PostDeploy is Script {
     TerrainType P = TerrainType.Pond;
     TerrainType W = TerrainType.WolfDen;
     TerrainType C = TerrainType.Cave;
-    
 
     TerrainType[20][20] memory map = [
       [O, O, O, O, O, O, T, O, O, O, O, O, O, O, O, O, O, O, O, O],
@@ -72,8 +70,17 @@ contract PostDeploy is Script {
       [O, O, O, T, T, T, T, O, O, O, O, T, O, O, O, T, O, O, O, O],
       [O, O, O, O, O, T, O, O, O, O, O, O, O, O, O, O, O, O, O, O]
     ];
-    return map;
-  }
+
+    TerrainType[][] memory dynamicSizeMap = new TerrainType[][](20);
+    for (uint256 i = 0; i < 20; i++) {
+        dynamicSizeMap[i] = new TerrainType[](20);
+        for (uint256 j = 0; j < 20; j++) {
+            dynamicSizeMap[i][j] = fixedSizeMap[i][j];
+        }
+    }
+
+    return dynamicSizeMap;
+}
 
 
   function spawnEntityAtPosition(address worldAddress,TerrainType terrainType, uint32 x, uint32 y) internal {
