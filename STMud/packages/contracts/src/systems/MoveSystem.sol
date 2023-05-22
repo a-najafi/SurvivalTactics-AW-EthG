@@ -13,8 +13,8 @@ contract MoveSystem is System {
     bytes32 entity = LibUtils.addressToEntityKey(address(_msgSender()));
     require(IsAgent.get(entity), "not joined yet");
 
-    uint32 width = MapConfig.getWidth();
-    uint32 height = MapConfig.getHeight();
+
+    uint32 width = MapConfig.getWidth(LibUtils.getSingletonEntity());
 
     (uint32 fromX, uint32 fromY) = Position.get(entity);
     uint32 moveSpeed = MoveSpeed.get(entity);
