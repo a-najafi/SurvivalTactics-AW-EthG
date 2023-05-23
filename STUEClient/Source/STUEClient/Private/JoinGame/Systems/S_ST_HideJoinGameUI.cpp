@@ -41,7 +41,7 @@ void US_ST_HideJoinGameUI::OnIsAgentComponentSet(
 {
 	FString walletAddress = UCF_GroupsStatics::GetSingletonComponent<FC_UEM_WalletAddress>(this).EthWalletAddress;
 	walletAddress = walletAddress.Mid(2);
-	FString entityId = FString::Printf(TEXT("\"0x%064s\""),*walletAddress);
+	const FString entityId = FString::Printf(TEXT("\"0x%064s\""),*walletAddress);
 	const FString debugEntityId = entityId;
 	if(!UFL_ST_Sync::GetEntityIdForContextId(this,IsAgentComponentSet.ContextId).Equals(debugEntityId))
 		return;
