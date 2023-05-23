@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "UnrealGameplayFramework/ContextWrapper/BaseClasses/Actor/CF_WrapperActor.h"
 #include "UObject/Object.h"
 #include "DS_ST_Map.generated.h"
 
@@ -16,5 +17,8 @@ class STUECLIENT_API UDS_ST_Map : public UDeveloperSettings
 public:
 	UPROPERTY(Config,EditDefaultsOnly,BlueprintReadOnly)
 	TSoftClassPtr<AActor> Tile;
+
+	UPROPERTY(Config,EditDefaultsOnly,BlueprintReadOnly)
+	TMap<FString,TSoftClassPtr<ACF_WrapperActor>> ClientContextWrappers;
 	
 };

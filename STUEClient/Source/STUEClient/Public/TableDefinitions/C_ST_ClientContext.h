@@ -12,5 +12,5 @@ struct STUECLIENT_API FC_ST_ClientContext : public FCF_Component
 {
 	GENERATED_BODY()
 	UPROPERTY(BlueprintReadOnly,EditAnywhere)
-	FString value;
+	FString context;
 };

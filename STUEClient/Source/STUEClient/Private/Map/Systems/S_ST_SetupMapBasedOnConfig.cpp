@@ -7,6 +7,7 @@
 #include "EventSystem/StaticFuntionLibrary/CF_EventStatics.h"
 #include "EventSystem/Subsystems/S_CF_Event.h"
 #include "Group/StaticFuntionLibrary/CF_GroupsStatics.h"
+#include "Map/Components/C_ST_MapSettings.h"
 #include "Map/Settings/DS_ST_Map.h"
 #include "TableDefinitions/C_ST_MapConfig.h"
 
@@ -32,8 +33,8 @@ void US_ST_SetupMapBasedOnConfig::OnMapConfigComponentSet(
 	const FCF_ComponentSetMessageBase MapConfigComponentSet)
 {
 	const FC_ST_MapConfig MapConfig = UCF_GroupsStatics::GetSingletonComponent<FC_ST_MapConfig>(this);
-	const UDS_ST_Map* MapSettings = GetDefault<UDS_ST_Map>();
-	const TSubclassOf<AActor> TileClass = MapSettings->Tile.LoadSynchronous();
+	const FC_ST_MapSettings MapSettings = UCF_GroupsStatics::GetSingletonComponent<FC_ST_MapSettings>(this);
+	const TSubclassOf<AActor> TileClass = MapSettings.Tile;
 
 	for (int i = 0; i < MapConfig.width * MapConfig.height ; ++i)
 	{
