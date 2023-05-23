@@ -2,7 +2,7 @@
 pragma solidity >=0.8.0;
 
 import { System } from "@latticexyz/world/src/System.sol";
-import { IsAgent, MoveSpeed, Position, MapConfig } from "../codegen/Tables.sol";
+import { IsAgent, MoveSpeed, Position, MapConfig ,ActionRecovery} from "../codegen/Tables.sol";
 import { LibMap } from "../libraries/LibMap.sol";
 import { LibUtils } from "../libraries/LibUtils.sol";
 
@@ -11,10 +11,12 @@ contract MoveSystem is System {
   function move(bytes memory path) public {
     
     bytes32 entity = LibUtils.addressToEntityKey(address(_msgSender()));
+    
+    require(ActionRecovery.get(entity) < block.number,"Still in recovery");
     require(IsAgent.get(entity), "not joined yet");
 
-    uint32 width = MapConfig.getWidth();
-    uint32 height = MapConfig.getHeight();
+
+    uint32 width = MapConfig.getWidth(LibUtils.getSingletonEntity());
 
     (uint32 fromX, uint32 fromY) = Position.get(entity);
     uint32 moveSpeed = MoveSpeed.get(entity);
@@ -34,7 +36,7 @@ contract MoveSystem is System {
         fromX = toX;
         fromY = toY;
         moveSpeed -= movementCost;
-
+        ActionRecovery.set(entity, uint32(block.number) + 20);
     }
   
   }

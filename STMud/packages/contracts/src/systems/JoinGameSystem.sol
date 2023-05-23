@@ -2,7 +2,7 @@
 pragma solidity >=0.8.0;
 
 import { System } from "@latticexyz/world/src/System.sol";
-import { IsAgent, IsObstruction, Position } from "../codegen/Tables.sol";
+import { IsAgent, IsObstruction, Position, ActionRecovery, ClientContext } from "../codegen/Tables.sol";
 import { LibMap } from "../libraries/LibMap.sol";
 import { LibUtils } from "../libraries/LibUtils.sol";
 
@@ -18,7 +18,7 @@ contract JoinGameSystem is System {
     IsAgent.set(entity, true);
     Position.set(entity, x, y);
     IsObstruction.set(entity, true);
-
+    ClientContext.set(entity, "Agent");
   
   }
 

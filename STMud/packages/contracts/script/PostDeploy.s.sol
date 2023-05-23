@@ -16,13 +16,13 @@ contract PostDeploy is Script {
 
     // Start broadcasting transactions from the deployer account
     vm.startBroadcast(deployerPrivateKey);
-
+    
     TerrainType[][] memory map = setupMapDesign();
 
     uint32 height = uint32(map.length);
     uint32 width = uint32(map[0].length);
 
-    MapConfig.set(IWorld(worldAddress),width, height);
+    MapConfig.set(IWorld(worldAddress),LibUtils.getSingletonEntity(),width, height);
 
     for (uint32 y = 0; y < height; y++) {
       for (uint32 x = 0; x < width; x++) {
@@ -85,6 +85,8 @@ contract PostDeploy is Script {
 
   function spawnEntityAtPosition(address worldAddress,TerrainType terrainType, uint32 x, uint32 y) internal {
         
+        if(terrainType != TerrainType.None)
+          console.log("is spawning not none");
         if(terrainType == TerrainType.Tree)
           LibSpawn.spawnTree(worldAddress,x,y);
         else if(terrainType == TerrainType.Mud)

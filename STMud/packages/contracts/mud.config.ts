@@ -216,7 +216,9 @@ export default mudConfig({
       schema: "bytes32",
     },
     MapConfig: {
-      keySchema: {},
+      keySchema: {
+        entity: "bytes32",
+      },
       schema: {
         width: "uint32",
         height: "uint32",
