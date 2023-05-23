@@ -1,8 +1,9 @@
 pragma solidity >=0.8.0;
 
 
-import { IsObstruction, MovementCost } from "../codegen/Tables.sol";
+import { IsObstruction, MovementCost, IsPushable } from "../codegen/Tables.sol";
 import { Position, PositionTableId } from "../codegen/tables/Position.sol";
+import { LibUtils } from "../libraries/LibUtils.sol";
 import { IWorld } from "../codegen/world/IWorld.sol";
 import { getKeysWithValue } from "@latticexyz/world/src/modules/keyswithvalue/getKeysWithValue.sol";
 
@@ -24,6 +25,29 @@ library LibMap {
                 return true;
         }
         return false;
+    }
+
+    function isPushableExists(address worldAddress,uint32 x, uint32 y) internal view returns (bool){
+        IWorld world = IWorld(worldAddress);
+        bytes32[] memory keysWithValue = getKeysWithValue(world, PositionTableId, Position.encode(x,y));
+        for(uint32 i = 0; i < keysWithValue.length; i++)
+        {
+            if(IsPushable.get(world,keysWithValue[i]))
+                return true;
+        }
+        return false;
+    }
+
+    function getIsPushable(address worldAddress,uint32 x, uint32 y) internal view returns (bytes32){
+
+        IWorld world = IWorld(worldAddress);
+        bytes32[] memory keysWithValue = getKeysWithValue(world, PositionTableId, Position.encode(x,y));
+        for(uint32 i = 0; i < keysWithValue.length; i++)
+        {
+            if(IsPushable.get(world,keysWithValue[i]))
+                return keysWithValue[i];
+        }
+        return LibUtils.getRandomKey();
     }
 
 

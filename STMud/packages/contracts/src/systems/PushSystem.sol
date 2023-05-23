@@ -15,15 +15,16 @@ contract PushSystem is System {
     require(ActionRecovery.get(entity) < block.number,"Still in recovery");
     require(IsAgent.get(entity), "not joined yet");
 
-
-    uint32 width = MapConfig.getWidth(LibUtils.getSingletonEntity());
-
     (uint32 fromX, uint32 fromY) = Position.get(entity);
+    require(LibMap.distance(fromX, fromY, x, y) == 1, "can only push adjacent spaces");
+    require(LibMap.isPushableExists(_world(), x, y), "a pushable entity must exist");
 
-
-
-
-    uint32 moveSpeed = MoveSpeed.get(entity);
+    bytes32 pushEntity = LibMap.getIsPushable(_world(), x, y);
+    uint32 dirX = x - fromX;
+    uint32 dirY = y - fromY;
+    Position.set(entity,x,y);
+    Position.set(pushEntity,x + dirX,y + dirY);
+    ActionRecovery.set(entity, uint32(block.number) + 30);
 
 
 

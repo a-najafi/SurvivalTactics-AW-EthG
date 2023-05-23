@@ -49,26 +49,26 @@ contract PostDeploy is Script {
     TerrainType C = TerrainType.Cave;
 
     TerrainType[20][20] memory fixedSizeMap = [
-      [O, O, O, O, O, O, T, O, O, O, O, O, O, O, O, O, O, O, O, O],
+      [O, O, O, O, F, O, T, O, O, O, W, O, O, O, O, O, O, O, O, O],
       [O, O, T, O, O, O, O, O, T, O, O, O, O, B, O, O, O, O, O, O],
       [O, T, T, T, T, O, O, O, O, O, O, O, O, O, O, T, T, O, O, O],
-      [O, O, T, T, T, T, O, O, O, O, B, O, O, O, O, O, T, O, O, O],
+      [O, O, T, T, T, T, O, O, F, O, B, O, O, C, O, O, T, O, O, O],
       [O, O, O, O, T, T, O, O, O, O, O, O, O, O, O, O, O, T, O, O],
-      [O, O, O, B, B, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O],
-      [O, T, O, O, O, B, B, O, O, O, O, T, O, O, O, O, O, B, O, O],
-      [O, O, T, T, O, O, O, O, O, T, O, B, O, O, T, O, B, O, O, O],
+      [O, O, O, B, B, M, M, M, O, O, O, O, O, O, O, O, O, O, O, O],
+      [O, T, O, M, M, B, B, M, O, O, O, T, O, W, O, O, O, B, O, C],
+      [O, O, T, T, O, M, M, O, O, T, O, B, O, O, T, O, B, O, O, O],
       [O, O, T, O, O, O, O, T, T, T, O, B, B, O, O, O, O, O, O, O],
-      [O, O, O, O, O, O, O, T, T, T, O, B, T, O, T, T, O, O, O, O],
+      [C, O, O, O, O, O, O, T, T, T, O, B, T, O, T, T, O, O, O, O],
       [O, B, O, O, O, B, O, O, T, T, O, B, O, O, T, T, O, O, O, O],
-      [O, O, B, O, O, O, T, O, T, T, O, O, B, T, T, T, O, O, O, O],
-      [O, O, B, B, O, O, O, O, T, O, O, O, B, O, T, O, O, O, O, O],
+      [O, O, B, O, W, O, T, O, T, T, O, O, B, T, T, T, O, O, F, O],
+      [O, O, B, B, O, O, O, O, T, O, O, O, B, O, T, O, O, F, F, O],
       [O, O, O, B, B, O, O, O, O, O, O, O, O, B, O, T, O, O, O, O],
-      [O, O, O, O, B, O, O, O, O, O, O, O, O, O, O, O, O, O, O, O],
-      [O, O, O, O, O, O, O, O, O, O, B, B, O, O, T, O, O, O, O, O],
-      [O, O, O, O, T, O, O, O, T, B, O, O, O, T, T, O, B, O, O, O],
-      [O, O, O, T, O, T, T, T, O, O, O, O, O, T, O, O, O, O, O, O],
-      [O, O, O, T, T, T, T, O, O, O, O, T, O, O, O, T, O, O, O, O],
-      [O, O, O, O, O, T, O, O, O, O, O, O, O, O, O, O, O, O, O, O]
+      [O, O, O, O, B, P, O, O, O, O, O, O, O, O, O, O, O, O, O, O],
+      [O, F, O, O, P, P, O, O, O, O, B, B, O, O, T, O, P, P, P, O],
+      [O, O, O, O, P, P, O, O, T, B, O, O, O, T, T, O, B, P, O, O],
+      [O, O, O, T, O, T, T, T, O, O, O, O, O, T, O, O, P, P, P, O],
+      [O, O, O, T, T, T, T, O, O, O, O, T, O, O, O, T, P, P, P, P],
+      [O, O, O, O, C, T, O, O, F, O, O, O, O, O, O, O, P, P, P, P]
     ];
 
     TerrainType[][] memory dynamicSizeMap = new TerrainType[][](20);
